@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising for Sitio Bebe</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Video Background Styling */
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%; 
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            opacity: 0.6; /* Add some transparency to the video */
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            position: relative;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        ul {
+            text-align: left;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Butterfly Animation */
+        .butterfly {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://img.icons8.com/emoji/96/butterfly.png');
+            background-size: contain;
+            animation: fly 3s ease-in-out infinite;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            50% {
+                transform: translate(150px, -150px) rotate(45deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #1E88E5;
+            background-color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.05);
+        }
+
+        /* Additional styling for group description */
+        .group-description {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="background-video">
+        <source src="your-healthy-community-video.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="butterfly"></div>
+    
+    <!-- Main Page -->
+    <div class="container active" id="mainPage">
+        <h1>Fundraising for Sitio Bebe</h1>
+        <p>Together, we can bring hope and clean water to Sitio Bebe.</p>
+        <p class="group-description">Group 6, ONLINE 9-1 S2</p>
+        <button class="btn" onclick="goToNextPage()">Click to Learn More</button>
+    </div>
+
+    <!-- Next Page with YouTube Channel Setup -->
+    <div class="container" id="nextPage">
+        <h1>YouTube Channel Setup</h1>
+        <p><strong>Why We Need to Address This:</strong> In Sitio Bebe, we need to address the lack of access to clean water, healthcare professionals, and essential health resources. Our YouTube channel can become a platform for raising awareness, sharing stories of resilience, and inspiring viewers to donate to support these needs. We can create videos showcasing the challenges faced by the community, highlighting the impact of clean water access and healthcare, and providing practical ways for viewers to contribute. By focusing on empathy and action, we can empower viewers to make a difference for Sitio Bebe.</p>
+
+        <ul>
+            <li>Choosing a compelling channel name that reflects our mission.</li>
+            <li>Creating a visually appealing channel banner and profile picture.</li>
+            <li>Writing a clear and concise channel description that outlines our goals and target audience.</li>
+        </ul>
+
+        <button class="btn" onclick="goToContentCreation()">Next: Content Creation</button>
+    </div>
+
+    <!-- Content Creation Page -->
+    <div class="container" id="contentCreationPage">
+        <h1>Content Creation</h1>
+        <ul>
+            <li>Brainstorming specific video ideas based on the content types we discussed.</li>
+            <li>Planning video scripts and gathering any necessary resources.</li>
+            <li>Recording initial videos and experimenting with editing styles.</li>
+        </ul>
+        <button class="btn" onclick="goToMarketing()">Next: Marketing and Promotion</button>
+    </div>
+
+    <!-- Marketing and Promotion Page -->
+    <div class="container" id="marketingPage">
+        <h1>Marketing and Promotion</h1>
+        <ul>
+            <li>Creating a social media strategy to promote our channel.</li>
+            <li>Sharing videos on relevant online communities and forums.</li>
+        </ul>
+        <button class="btn" onclick="goBack()">Back to Home</button>
+    </div>
+
+    <script>
+        // Page Transition Function
+        function goToNextPage() {
+            changePage('mainPage', 'nextPage');
+        }
+
+        function goToContentCreation() {
+            changePage('nextPage', 'contentCreationPage');
+        }
+
+        function goToMarketing() {
+            changePage('contentCreationPage', 'marketingPage');
+        }
+
+        function goBack() {
+            changePage('marketingPage', 'mainPage');
+        }
+
+        function changePage(hideId, showId) {
+            document.getElementById(hideId).classList.remove('active');
+            document.getElementById(showId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
